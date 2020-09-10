@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: @artifactId@
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        prefix: ${spring.application.name}
+        file-extension: yaml
+        group: @artifactId@-group
+        namespace: 49e19216-89ea-4ef3-9f36-988cb9c260e0
+      discovery:
+        server-addr: 127.0.0.1:8848
+        cluster-name: @artifactId@-group
+        namespace: 49e19216-89ea-4ef3-9f36-988cb9c260e0
