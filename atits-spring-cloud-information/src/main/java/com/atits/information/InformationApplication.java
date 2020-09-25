@@ -2,10 +2,10 @@ package com.atits.information;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 /**
  * @description:
@@ -14,8 +14,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  **/
 @SpringBootApplication
 @EnableDiscoveryClient
-@RefreshScope
 @EnableFeignClients
+@EnableWebSecurity
+@ComponentScan({"com.atits.base","com.atits.information"})
 public class InformationApplication {
 
     public static void main(String[] args) {

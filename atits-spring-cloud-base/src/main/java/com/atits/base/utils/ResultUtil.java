@@ -1,4 +1,4 @@
-package com.atits.security.util;
+package com.atits.base.utils;
 
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;

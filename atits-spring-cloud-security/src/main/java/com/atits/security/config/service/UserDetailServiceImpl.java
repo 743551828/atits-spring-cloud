@@ -1,6 +1,6 @@
 package com.atits.security.config.service;
 
-import com.atits.security.config.entity.UserEntity;
+import com.atits.base.item.SelfUserDetail;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,7 +21,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity selfUserEntity = new UserEntity();
+        SelfUserDetail selfUserEntity = new SelfUserDetail();
         selfUserEntity.setUserId(1L);
         selfUserEntity.setUsername(username);
         selfUserEntity.setPassword("123");

@@ -1,6 +1,6 @@
-package com.atits.security.config.handler.security;
+package com.atits.security.config.handler;
 
-import com.atits.security.util.ResultUtil;
+import com.atits.base.utils.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
  * @CreateTime 2019/10/3 9:06
  */
 @Slf4j
-@Component
 public class UserLoginFailureHandler implements AuthenticationFailureHandler {
     /**
      * 登录失败返回结果

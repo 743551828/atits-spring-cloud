@@ -31,6 +31,7 @@
 		<jpa.version>2.1.11.RELEASE</jpa.version>
 		<spring-security-jwt.version>1.0.9.RELEASE</spring-security-jwt.version>
 		<jwt.version>0.9.1</jwt.version>
+		<fastjson.version>1.2.61</fastjson.version>
 	</properties>
 
 	<dependencies>
@@ -101,6 +102,11 @@
 				<groupId>io.jsonwebtoken</groupId>
 				<artifactId>jjwt</artifactId>
 				<version>${jwt.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

@@ -1,4 +1,6 @@
-package com.atits.base.utils.encryption;
+package com.atits.base.utils;
+
+import sun.misc.BASE64Decoder;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +18,34 @@ import java.util.Base64;
  **/
 public class RsaUtils {
 
-    private static final int DEFAULT_KEY_SIZE = 2048;
+    /**
+     * String转公钥PublicKey
+     * @param key
+     * @return
+     * @throws Exception
+     */
+    public static PublicKey getPublicKeyByString(String key) throws Exception {
+        byte[] keyBytes;
+        keyBytes = (new BASE64Decoder()).decodeBuffer(key);
+        X509EncodedKeySpec keySpec = new X509EncodedKeySpec(keyBytes);
+        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+        return keyFactory.generatePublic(keySpec);
+    }
+
+    /**
+     * String转私钥PrivateKey
+     *
+     * @param key
+     * @return
+     * @throws Exception
+     */
+    public static PrivateKey getPrivateKeyByString(String key) throws Exception {
+        byte[] keyBytes;
+        keyBytes = (new BASE64Decoder()).decodeBuffer(key);
+        PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(keyBytes);
+        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+        return keyFactory.generatePrivate(keySpec);
+    }
 
     /**
      * 从文件中读取公钥
@@ -80,7 +109,7 @@ public class RsaUtils {
     public static void generateKey(String publicKeyFilename, String privateKeyFilename, String secret, int keySize) throws Exception {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
         SecureRandom secureRandom = new SecureRandom(secret.getBytes());
-        keyPairGenerator.initialize(Math.max(keySize, DEFAULT_KEY_SIZE), secureRandom);
+        keyPairGenerator.initialize(keySize, secureRandom);
         KeyPair keyPair = keyPairGenerator.genKeyPair();
         // 获取公钥并写出
         byte[] publicKeyBytes = keyPair.getPublic().getEncoded();

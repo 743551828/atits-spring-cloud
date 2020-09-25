@@ -1,7 +1,6 @@
-package com.atits.security.util;
+package com.atits.base.utils;
 
 import com.alibaba.fastjson.JSON;
-import com.atits.base.utils.encryption.RsaUtils;
 import com.atits.base.item.Payload;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;

@@ -1,6 +1,6 @@
-package com.atits.security.config.handler.security;
+package com.atits.security.config.handler;
 
-import com.atits.security.util.ResultUtil;
+import com.atits.base.utils.ResultUtil;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
@@ -16,7 +16,6 @@ import java.util.Map;
  * @Author Zhangys
  * @CreateTime 2019/10/3 9:42
  */
-@Component
 public class UserLogoutSuccessHandler implements LogoutSuccessHandler {
     /**
      * 用户登出返回结果

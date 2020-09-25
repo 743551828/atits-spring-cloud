@@ -34,8 +34,7 @@ public class NewsController {
 
     @GetMapping("/test2")
     public String test2(){
-        String test = testClient.test();
-        return "Invoke : " + testClient + ", return : " + test;
+        return "Invoke success";
     }
 
 
