@@ -1,5 +1,6 @@
 package com.atits.security.controller;
 
+import com.atits.security.client.AccountClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.security.core.Authentication;
@@ -15,14 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @create: 2020-09-08 13:30
  **/
 @RestController
-@RequestMapping("/account")
 @RefreshScope
-public class AccountController{
+public class AccountController implements AccountClient {
 
     @Value(value = "${test}")
     private Integer useLocalCache;
 
-    @GetMapping("/get")
+    @Override
     public String get(@RequestParam String test) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return useLocalCache + "####" + test;

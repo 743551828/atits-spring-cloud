@@ -6,6 +6,7 @@ import com.atits.base.utils.JwtUtils;
 import com.atits.base.utils.ResultUtil;
 import com.atits.security.config.jwt.PrivateSecretProperties;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
@@ -21,6 +22,7 @@ import java.util.Map;
  */
 @Slf4j
 public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
+
     /**
      * 登录成功返回结果
      * @Author Zhangys

@@ -1,18 +1,16 @@
 package com.atits.security.config.security;
 
-import com.atits.base.security.filter.JWTAuthenticationTokenFilter;
-import com.atits.base.security.handler.UserAuthAccessDeniedHandler;
-import com.atits.base.security.handler.UserAuthenticationEntryPointHandler;
+import com.atits.base.security.config.SecurityConfigureTemplate;
 import com.atits.security.config.handler.UserLoginFailureHandler;
 import com.atits.security.config.handler.UserLoginSuccessHandler;
 import com.atits.security.config.handler.UserLogoutSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -22,7 +20,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @create: 2020-09-10 13:52
  **/
 @Configuration
-public class SecurityConfigure extends WebSecurityConfigurerAdapter {
+@Profile("prod")
+public class SecurityConfigureProd extends WebSecurityConfigurerAdapter{
+
 
     /**
      * 注册⼀个认证管理器对象到容器
@@ -37,13 +37,9 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                // 需要登陆后才能访问
-                .anyRequest().authenticated()
-                .and()
-                // 配置未登录自定义处理类
-                .exceptionHandling().authenticationEntryPoint(new UserAuthenticationEntryPointHandler())
-                .and()
+        SecurityConfigureTemplate securityConfigureTemplate = new SecurityConfigureTemplate(authenticationManager());
+        securityConfigureTemplate.configureProd(http);
+        http
                 // 配置登录地址
                 .formLogin()
                 .loginProcessingUrl("/login")
@@ -56,23 +52,7 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 // 配置用户登出自定义处理类
-                .logoutSuccessHandler(new UserLogoutSuccessHandler())
-                .and()
-                // 配置没有权限自定义处理类
-                .exceptionHandling().accessDeniedHandler(new UserAuthAccessDeniedHandler())
-                .and()
-                // 开启跨域
-                .cors()
-                .and()
-                // 取消跨站请求伪造防护
-                .csrf().disable();
-
-        // 基于Token不需要session
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        // 禁用缓存
-        http.headers().cacheControl();
-        // 添加JWT过滤器
-        http.addFilter(new JWTAuthenticationTokenFilter(authenticationManager()));
+                .logoutSuccessHandler(new UserLogoutSuccessHandler());
     }
 
     @Override
@@ -88,4 +68,5 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
+
 }

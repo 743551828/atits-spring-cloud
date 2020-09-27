@@ -1,9 +1,8 @@
-package com.atits.information.config;
+package com.atits.security.config.security;
 
 import com.atits.base.properties.JWTProperties;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.context.request.RequestContextHolder;

@@ -1,8 +1,10 @@
-package com.atits.security.config.jwt;
+package com.atits.base.security.filter;
 
 import com.atits.base.item.Payload;
-import com.atits.security.config.entity.UserEntity;
-import com.atits.security.util.JwtUtils;
+import com.atits.base.item.SelfUserDetail;
+import com.atits.base.properties.JWTProperties;
+import com.atits.base.utils.JwtUtils;
+import com.atits.base.utils.ResultUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,9 +34,9 @@ public class JWTAuthenticationTokenFilter extends BasicAuthenticationFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // 获取请求头中JWT的Token
-        String tokenHeader = request.getHeader(JWTConfig.tokenHeader);
-        Object tokenAttr = request.getAttribute(JWTConfig.tokenHeader);
-        String tokenParam = request.getParameter(JWTConfig.tokenHeader);
+        String tokenHeader = request.getHeader(JWTProperties.tokenHeader);
+        Object tokenAttr = request.getAttribute(JWTProperties.tokenHeader);
+        String tokenParam = request.getParameter(JWTProperties.tokenHeader);
         String wholeToken = "";
         if (tokenHeader != null){
             wholeToken = tokenHeader;
@@ -44,21 +46,23 @@ public class JWTAuthenticationTokenFilter extends BasicAuthenticationFilter {
             wholeToken = tokenParam;
         }
 
-        if (wholeToken.startsWith(JWTConfig.tokenPrefix)) {
+        if (wholeToken.startsWith(JWTProperties.tokenPrefix)) {
             try {
                 // 截取JWT前缀
-                String token = wholeToken.replace(JWTConfig.tokenPrefix, "");
+                String token = wholeToken.replace(JWTProperties.tokenPrefix, "");
                 // 解析JWT
-                Payload<UserEntity> payload = JwtUtils.getInfoFromToken(token, JWTConfig.publicSecret, UserEntity.class);
-                UserEntity userInfo = payload.getUserInfo();
+                Payload<SelfUserDetail> payload = JwtUtils.getInfoFromToken(token, JWTProperties.publicSecret, SelfUserDetail.class);
+                SelfUserDetail userInfo = payload.getUserInfo();
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userInfo, userInfo.getUserId(), userInfo.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+                filterChain.doFilter(request, response);
             } catch (ExpiredJwtException e){
-                log.info("Token过期");
+                ResultUtil.responseJson(response,ResultUtil.resultCode(401,"Token过期"));
             } catch (Exception e) {
-                log.info("Token无效");
+                ResultUtil.responseJson(response,ResultUtil.resultCode(401,"Token无效"));
             }
+        }else {
+            ResultUtil.responseJson(response,ResultUtil.resultCode(401,"未携带tokenToken"));
         }
-        filterChain.doFilter(request, response);
     }
 }

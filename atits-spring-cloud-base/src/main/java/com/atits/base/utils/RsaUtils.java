@@ -1,5 +1,6 @@
 package com.atits.base.utils;
 
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import sun.misc.BASE64Decoder;
 
 import java.io.File;

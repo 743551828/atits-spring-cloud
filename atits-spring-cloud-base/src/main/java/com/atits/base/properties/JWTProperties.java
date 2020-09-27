@@ -1,14 +1,9 @@
 package com.atits.base.properties;
 
 import com.atits.base.utils.RsaUtils;
-import lombok.Data;
-import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import java.security.PrivateKey;
 import java.security.PublicKey;
 
 /**
@@ -19,7 +14,6 @@ import java.security.PublicKey;
  */
 @Component
 @ConfigurationProperties(prefix = "jwt")
-@RefreshScope
 public class JWTProperties {
 
     public static String publicSecretString;

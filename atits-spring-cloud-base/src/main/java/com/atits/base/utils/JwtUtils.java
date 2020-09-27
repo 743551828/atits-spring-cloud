@@ -2,10 +2,7 @@ package com.atits.base.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.atits.base.item.Payload;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -78,7 +75,7 @@ public class JwtUtils {
      * @param publicKey 公钥
      * @return 用户信息
      */
-    public static <T> Payload<T> getInfoFromToken(String token, PublicKey publicKey, Class<T> userType) {
+    public static <T> Payload<T> getInfoFromToken(String token, PublicKey publicKey, Class<T> userType) throws ExpiredJwtException {
         Jws<Claims> claimsJws = parserToken(token, publicKey);
         Claims body = claimsJws.getBody();
         Payload<T> claims = new Payload<>();

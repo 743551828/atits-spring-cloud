@@ -1,4 +1,4 @@
-package com.atits.security.config.entity;
+package com.atits.base.item;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,7 +14,7 @@ import java.util.Collection;
  * @create: 2020-09-10 13:52
  */
 @Data
-public class UserEntity implements Serializable, UserDetails {
+public class SelfUserDetail implements Serializable, UserDetails {
 
 	private static final long serialVersionUID = 1L;
 
