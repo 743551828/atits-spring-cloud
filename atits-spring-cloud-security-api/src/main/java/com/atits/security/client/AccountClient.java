@@ -1,18 +1,19 @@
 package com.atits.security.client;
 
 import com.atits.security.model.entity.UserEntity;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * @description: 账户controller
+ * @description: 账户接口
  * @author: zhangys
  * @create: 2020-09-08 13:30
  **/
-@FeignClient("atits-spring-cloud-security")
+@FeignClient("atits-spring-cloud-security/security")
+@Api("账户接口")
 public interface AccountClient{
 
     /**

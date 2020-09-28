@@ -8,6 +8,7 @@
         <module>atits-spring-cloud-base</module>
         <module>atits-spring-cloud-security-api</module>
         <module>atits-spring-cloud-gateway</module>
+        <module>atits-spring-cloud-information-api</module>
     </modules>
 	<parent>
         <groupId>org.springframework.boot</groupId>
@@ -57,6 +58,11 @@
 			<dependency>
 				<groupId>com.atits</groupId>
 				<artifactId>atits-spring-cloud-security-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.atits</groupId>
+				<artifactId>atits-spring-cloud-information-api</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

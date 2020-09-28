@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>atits-spring-cloud-security-api</artifactId>
-    <name>atits-spring-cloud-security-api</name>
-    <description>账户模块-api</description>
+    <artifactId>atits-spring-cloud-information-api</artifactId>
+    <name>atits-spring-cloud-information-api</name>
+    <description>资讯模块-api</description>
     <packaging>jar</packaging>
 
     <dependencies>
