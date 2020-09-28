@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author: zhangys
  * @create: 2020-09-08 13:30
  **/
-@FeignClient("atits-spring-cloud-information/information")
+@FeignClient("atits-spring-cloud-information")
 @Api("资讯接口")
 public interface NewsClient{
 

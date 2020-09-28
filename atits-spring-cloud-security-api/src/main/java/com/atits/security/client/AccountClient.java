@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author: zhangys
  * @create: 2020-09-08 13:30
  **/
-@FeignClient("atits-spring-cloud-security/security")
+@FeignClient("atits-spring-cloud-security")
 @Api("账户接口")
 public interface AccountClient{
 
