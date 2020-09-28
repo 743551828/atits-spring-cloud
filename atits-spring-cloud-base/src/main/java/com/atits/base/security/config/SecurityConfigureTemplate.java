@@ -1,6 +1,7 @@
 package com.atits.base.security.config;
 
-import com.atits.base.security.filter.JWTAuthenticationTokenFilter;
+import com.atits.base.security.filter.JWTAuthenticationTokenFilterDev;
+import com.atits.base.security.filter.JWTAuthenticationTokenFilterProd;
 import com.atits.base.security.handler.UserAuthAccessDeniedHandler;
 import com.atits.base.security.handler.UserAuthenticationEntryPointHandler;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,6 +27,13 @@ public class SecurityConfigureTemplate {
                 .and()
                 .csrf().disable()
                 .cors();
+
+        // 基于Token不需要session
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        // 禁用缓存
+        http.headers().cacheControl();
+        // 添加JWT过滤器
+        http.addFilter(new JWTAuthenticationTokenFilterDev(authenticationManager));
     }
 
     public void configureProd(HttpSecurity http) throws Exception {
@@ -50,6 +58,6 @@ public class SecurityConfigureTemplate {
         // 禁用缓存
         http.headers().cacheControl();
         // 添加JWT过滤器
-        http.addFilter(new JWTAuthenticationTokenFilter(authenticationManager));
+        http.addFilter(new JWTAuthenticationTokenFilterProd(authenticationManager));
     }
 }

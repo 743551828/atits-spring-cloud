@@ -1,8 +1,10 @@
 package com.atits.security.client;
 
+import com.atits.security.model.entity.UserEntity;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -19,8 +21,9 @@ public interface AccountClient{
      * @param test
      * @return
      */
-    @GetMapping("/get")
-    String get(@RequestParam String test);
+    @PostMapping("/get")
+    @ApiOperation("test")
+    String get(@RequestBody UserEntity userEntity);
 
 
 }

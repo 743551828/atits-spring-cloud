@@ -33,6 +33,7 @@
 		<spring-security-jwt.version>1.0.9.RELEASE</spring-security-jwt.version>
 		<jwt.version>0.9.1</jwt.version>
 		<fastjson.version>1.2.61</fastjson.version>
+		<springfox.version>3.0.0</springfox.version>
 	</properties>
 
 	<dependencies>
@@ -113,6 +114,11 @@
 				<groupId>com.alibaba</groupId>
 				<artifactId>fastjson</artifactId>
 				<version>${fastjson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-boot-starter</artifactId>
+				<version>${springfox.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

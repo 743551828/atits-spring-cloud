@@ -1,13 +1,10 @@
 package com.atits.security.controller;
 
 import com.atits.security.client.AccountClient;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+import com.atits.security.model.entity.UserEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -16,16 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @create: 2020-09-08 13:30
  **/
 @RestController
-@RefreshScope
 public class AccountController implements AccountClient {
 
-    @Value(value = "${test}")
-    private Integer useLocalCache;
-
     @Override
-    public String get(@RequestParam String test) {
+    public String get(@RequestBody UserEntity userEntity) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return useLocalCache + "####" + test;
+        authentication.getDetails();
+        return "####" + userEntity;
     }
 
 

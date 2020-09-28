@@ -17,14 +17,16 @@ import java.util.Objects;
  * @create: 2020-09-10 13:52
  **/
 @Configuration
-@Profile("prod")
 public class FeignTokenInterceptor implements RequestInterceptor {
 
     @Override
     public void apply(RequestTemplate template) {
         HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
         String tokenHeader = JWTProperties.tokenHeader;
-        template.header(tokenHeader, request.getHeader(tokenHeader));
+        String header = request.getHeader(tokenHeader);
+        if (header != null){
+            template.header(tokenHeader, header);
+        }
     }
 
 }

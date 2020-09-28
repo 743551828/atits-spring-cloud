@@ -14,9 +14,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
  **/
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
+@EnableFeignClients(basePackages = {"com.atits"})
 @EnableWebSecurity
-@ComponentScan({"com.atits.base","com.atits.information"})
+@ComponentScan({"com.atits"})
 public class InformationApplication {
 
     public static void main(String[] args) {

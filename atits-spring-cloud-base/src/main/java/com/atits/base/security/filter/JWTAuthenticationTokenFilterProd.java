@@ -25,9 +25,9 @@ import java.io.IOException;
  * @create: 2020-09-10 13:52
  */
 @Slf4j
-public class JWTAuthenticationTokenFilter extends BasicAuthenticationFilter {
+public class JWTAuthenticationTokenFilterProd extends BasicAuthenticationFilter {
 
-    public JWTAuthenticationTokenFilter(AuthenticationManager authenticationManager) {
+    public JWTAuthenticationTokenFilterProd(AuthenticationManager authenticationManager) {
         super(authenticationManager);
     }
 
