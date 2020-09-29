@@ -3,10 +3,11 @@ package com.atits.base.security.handler;
 import com.atits.base.utils.ResultUtil;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import static com.atits.base.contants.StatusCodeConstant._500008;
 
 /**
  * @Description 暂无权限处理类
@@ -21,6 +22,6 @@ public class UserAuthAccessDeniedHandler implements AccessDeniedHandler{
      */
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException exception){
-        ResultUtil.responseJson(response,ResultUtil.resultCode(403,"未授权"));
+        ResultUtil.responseJson(response,ResultUtil.resultCode(_500008));
     }
 }

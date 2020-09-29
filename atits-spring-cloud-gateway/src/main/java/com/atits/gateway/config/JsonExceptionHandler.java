@@ -1,8 +1,5 @@
 package com.atits.gateway.config;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.boot.autoconfigure.web.ErrorProperties;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.DefaultErrorWebExceptionHandler;
@@ -10,11 +7,12 @@ import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.reactive.error.ErrorAttributes;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.reactive.function.server.RequestPredicates;
-import org.springframework.web.reactive.function.server.RouterFunction;
-import org.springframework.web.reactive.function.server.RouterFunctions;
-import org.springframework.web.reactive.function.server.ServerRequest;
-import org.springframework.web.reactive.function.server.ServerResponse;
+import org.springframework.web.reactive.function.server.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.atits.base.contants.StatusCodeConstant._502;
 
 /**
  * 自定义异常处理
@@ -39,7 +37,7 @@ public class JsonExceptionHandler extends DefaultErrorWebExceptionHandler {
         Throwable error = super.getError(request);
         Map<String, Object> errorAttributes = new HashMap<>(8);
         errorAttributes.put("message", error.getMessage());
-        errorAttributes.put("code", HttpStatus.BAD_GATEWAY.value());
+        errorAttributes.put("code", _502.getCode());
         errorAttributes.put("method", request.methodName());
         errorAttributes.put("path", request.path());
         return errorAttributes;

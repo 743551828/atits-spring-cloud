@@ -7,6 +7,8 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static com.atits.base.contants.StatusCodeConstant.*;
+
 /**
  * 用户未登录处理类
  * @Author Zhangys
@@ -20,6 +22,6 @@ public class UserAuthenticationEntryPointHandler implements AuthenticationEntryP
      */
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception){
-        ResultUtil.responseJson(response,ResultUtil.resultCode(401,"未登录"));
+        ResultUtil.responseJson(response,ResultUtil.resultCode(_500009));
     }
 }

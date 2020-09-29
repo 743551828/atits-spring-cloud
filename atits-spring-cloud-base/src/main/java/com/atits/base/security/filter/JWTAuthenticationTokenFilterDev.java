@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.atits.base.contants.StatusCodeConstant.*;
+
 /**
  * JWT接口请求校验拦截器
  * 请求接口时会进入这里验证Token是否合法和过期
@@ -55,9 +57,9 @@ public class JWTAuthenticationTokenFilterDev extends BasicAuthenticationFilter {
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userInfo, userInfo.getUserId(), userInfo.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             } catch (ExpiredJwtException e){
-                ResultUtil.responseJson(response,ResultUtil.resultCode(401,"Token过期"));
+                ResultUtil.responseJson(response,ResultUtil.resultCode(_500005));
             } catch (Exception e) {
-                ResultUtil.responseJson(response,ResultUtil.resultCode(401,"Token无效"));
+                ResultUtil.responseJson(response,ResultUtil.resultCode(_500006));
             }
         }
         filterChain.doFilter(request, response);

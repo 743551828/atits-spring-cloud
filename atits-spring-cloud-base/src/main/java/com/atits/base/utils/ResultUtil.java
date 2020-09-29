@@ -1,11 +1,14 @@
 package com.atits.base.utils;
 
 import com.alibaba.fastjson.JSON;
+import com.atits.base.contants.StatusCodeConstant;
 import lombok.extern.slf4j.Slf4j;
 import javax.servlet.ServletResponse;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.atits.base.contants.StatusCodeConstant.*;
 
 /**
  * 返回结果工具类
@@ -51,8 +54,8 @@ public class ResultUtil {
      * @Return Map<String,Object> 返回数据MAP
      */
     public static Map<String, Object> resultSuccess(Map<String, Object> resultMap){
-        resultMap.put("message","操作成功");
-        resultMap.put("code", 200);
+        resultMap.put("message",_200.getMessage());
+        resultMap.put("code", _200.getCode());
         return resultMap;
     }
     /**
@@ -63,8 +66,8 @@ public class ResultUtil {
      * @Return Map<String,Object> 返回数据MAP
      */
     public static Map<String, Object> resultError(Map<String, Object> resultMap){
-        resultMap.put("message","操作失败");
-        resultMap.put("code",500);
+        resultMap.put("message",_500.getMessage());
+        resultMap.put("code",_500.getCode());
         return resultMap;
     }
     /**
@@ -75,10 +78,17 @@ public class ResultUtil {
      * @Param  msg  信息
      * @Return Map<String,Object> 返回数据MAP
      */
-    public static Map<String, Object> resultCode(Integer code,String msg){
+    public static Map<String, Object> resultCode(Long code,String msg){
         Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("message",msg);
         resultMap.put("code",code);
+        return resultMap;
+    }
+
+    public static Map<String, Object> resultCode(StatusCodeConstant statusCodeConstant){
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("message",statusCodeConstant.getMessage());
+        resultMap.put("code",statusCodeConstant.getCode());
         return resultMap;
     }
 

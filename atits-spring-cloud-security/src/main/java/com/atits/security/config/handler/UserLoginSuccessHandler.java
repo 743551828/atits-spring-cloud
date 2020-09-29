@@ -6,7 +6,6 @@ import com.atits.base.utils.JwtUtils;
 import com.atits.base.utils.ResultUtil;
 import com.atits.security.config.jwt.PrivateSecretProperties;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
@@ -14,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.atits.base.contants.StatusCodeConstant.*;
 
 /**
  * @Description 登录成功处理类
@@ -36,7 +37,7 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
         token = JWTProperties.tokenPrefix + token;
         // 封装返回参数
         Map<String,Object> resultData = new HashMap<>();
-        resultData.put("code","200");
+        resultData.put("code", _200.getCode());
         resultData.put("msg", "登录成功");
         resultData.put("token",token);
         ResultUtil.responseJson(response,resultData);
