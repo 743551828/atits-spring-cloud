@@ -1,4 +1,4 @@
-package com.atits.security.model.entity;
+package com.atits.security.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

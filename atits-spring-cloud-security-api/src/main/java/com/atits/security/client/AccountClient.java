@@ -1,6 +1,6 @@
 package com.atits.security.client;
 
-import com.atits.security.model.entity.UserEntity;
+import com.atits.security.model.dto.UserDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -24,7 +24,7 @@ public interface AccountClient{
      */
     @PostMapping("/get")
     @ApiOperation("test")
-    String get(@RequestBody UserEntity userEntity);
+    String get(@RequestBody UserDto userDto);
 
 
 }

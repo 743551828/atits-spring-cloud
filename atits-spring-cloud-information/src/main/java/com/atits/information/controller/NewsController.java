@@ -2,7 +2,7 @@ package com.atits.information.controller;
 
 import com.atits.information.client.NewsClient;
 import com.atits.security.client.AccountClient;
-import com.atits.security.model.entity.UserEntity;
+import com.atits.security.model.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,11 +19,12 @@ public class NewsController implements NewsClient {
 
     @Override
     public String test(){
-        UserEntity userEntity = new UserEntity();
-        userEntity.setLoginPassword("pppp");
-        userEntity.setLoginUsername("uuu");
-        String result = accountClient.get(userEntity);
-        return "Invoke : " + accountClient + ", return : " + result;
+        UserDto userDto = new UserDto();
+        userDto.setLoginUsername("uuu");
+        for (int i = 0; i < 100;i++){
+            accountClient.get(userDto);
+        }
+        return "ok";
     }
 
     @Override

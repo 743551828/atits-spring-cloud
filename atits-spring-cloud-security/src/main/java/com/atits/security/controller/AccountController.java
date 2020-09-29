@@ -1,7 +1,8 @@
 package com.atits.security.controller;
 
 import com.atits.security.client.AccountClient;
-import com.atits.security.model.entity.UserEntity;
+import com.atits.security.entity.UserEntity;
+import com.atits.security.model.dto.UserDto;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,11 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AccountController implements AccountClient {
 
+    int i = 0;
+
     @Override
-    public String get(@RequestBody UserEntity userEntity) {
+    public String get(@RequestBody UserDto userDto) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         authentication.getDetails();
-        return "####" + userEntity;
+        System.out.println(i++);
+        return "####" + 1111111;
     }
 
 
