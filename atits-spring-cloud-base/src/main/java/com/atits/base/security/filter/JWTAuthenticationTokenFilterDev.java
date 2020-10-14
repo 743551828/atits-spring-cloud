@@ -54,7 +54,7 @@ public class JWTAuthenticationTokenFilterDev extends BasicAuthenticationFilter {
                 // 解析JWT
                 Payload<SelfUserDetail> payload = JwtUtils.getInfoFromToken(token, JWTProperties.publicSecret, SelfUserDetail.class);
                 SelfUserDetail userInfo = payload.getUserInfo();
-                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userInfo, userInfo.getUserId(), userInfo.getAuthorities());
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userInfo, userInfo.getCode(), userInfo.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             } catch (ExpiredJwtException e){
                 ResultUtil.responseJson(response,ResultUtil.resultCode(_500005));

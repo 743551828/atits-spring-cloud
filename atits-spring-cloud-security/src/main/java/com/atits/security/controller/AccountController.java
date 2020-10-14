@@ -1,7 +1,6 @@
 package com.atits.security.controller;
 
 import com.atits.security.client.AccountClient;
-import com.atits.security.entity.UserEntity;
 import com.atits.security.model.dto.UserDto;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

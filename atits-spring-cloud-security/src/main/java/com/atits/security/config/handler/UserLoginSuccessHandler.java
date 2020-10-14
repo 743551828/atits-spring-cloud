@@ -32,8 +32,8 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication){
         // 组装JWT
-        SelfUserDetail selfUserEntity =  (SelfUserDetail) authentication.getPrincipal();
-        String token = JwtUtils.generateTokenExpireInSeconds(selfUserEntity, PrivateSecretProperties.privateSecret, PrivateSecretProperties.expiration);
+        SelfUserDetail selfUserDetail =  (SelfUserDetail) authentication.getPrincipal();
+        String token = JwtUtils.generateTokenExpireInSeconds(selfUserDetail, PrivateSecretProperties.privateSecret, PrivateSecretProperties.expiration);
         token = JWTProperties.tokenPrefix + token;
         // 封装返回参数
         Map<String,Object> resultData = new HashMap<>();

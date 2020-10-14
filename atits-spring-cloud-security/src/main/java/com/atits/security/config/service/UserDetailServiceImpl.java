@@ -1,6 +1,15 @@
 package com.atits.security.config.service;
 
+import com.atits.base.contants.UserStatus;
+import com.atits.base.item.SelfUserDepartmentRoleDetail;
 import com.atits.base.item.SelfUserDetail;
+import com.atits.base.utils.BeanCopierUtil;
+import com.atits.security.domain.ISecUserDepartmentRoleDomain;
+import com.atits.security.domain.ISecUserDomain;
+import com.atits.security.entity.SecUserEntity;
+import com.atits.security.entity.view.SecUserDepartmentRoleView;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,8 +17,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.Role;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
+import static com.atits.base.contants.AdminStatus._isAdmin;
 
 /**
  * @description: 用户账号配置
@@ -19,19 +33,33 @@ import java.util.Set;
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
 
+    @Autowired
+    private ISecUserDomain secUserDomain;
+
+    @Autowired
+    private ISecUserDepartmentRoleDomain secUserDepartmentRoleDomain;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        SelfUserDetail selfUserEntity = new SelfUserDetail();
-        selfUserEntity.setUserId(1L);
-        selfUserEntity.setUsername(username);
-        selfUserEntity.setPassword("123");
-        selfUserEntity.setAccountNonLocked(true);
-        selfUserEntity.setAccountNonExpired(true);
-        selfUserEntity.setCredentialsNonExpired(true);
-        selfUserEntity.setEnabled(true);
+        SecUserEntity secUserEntity = secUserDomain.getOneByLoginUsername(username);
+        if (secUserEntity == null){
+            throw new UsernameNotFoundException("用户名错误");
+        }
+        if (UserStatus._PROHIBIT.getCode().equals(secUserEntity.getStatus())){
+            throw new LockedException("账号未激活");
+        }
+        // 组装用户部门角色集合
+        SelfUserDetail selfUserDetail = BeanCopierUtil.copy(secUserEntity,SelfUserDetail.class);
+        List<SecUserDepartmentRoleView> userDepartmentRole = secUserDepartmentRoleDomain.findByLoginUsername(username);
+        List<SelfUserDepartmentRoleDetail> userDepartmentRoleDetails = BeanCopierUtil.copy(userDepartmentRole, SelfUserDepartmentRoleDetail.class);
+        selfUserDetail.setUserDepartmentRoles(userDepartmentRoleDetails);
+        // 组装角色集合
         Set<GrantedAuthority> authorities = new HashSet<>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_" + "admin"));
-        selfUserEntity.setAuthorities(authorities);
-        return selfUserEntity;
+        for (SecUserDepartmentRoleView userDepartmentRoleView: userDepartmentRole){
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + userDepartmentRoleView.getRoleName()));
+        }
+        selfUserDetail.setAuthorities(authorities);
+        return selfUserDetail;
     }
+
 }
