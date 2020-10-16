@@ -26,8 +26,7 @@ spring:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy #命名策略
     show-sql: false
   datasource:
-    url: jdbc:mysql://47.111.130.161:3306/atits_security
+    url: jdbc:mysql://47.111.130.161:3306/atits_security?characterEncoding=UTF-8
     username: root
     password: 46132205092017
     driver-class-name: com.mysql.cj.jdbc.Driver
-    sql-script-encoding: utf-8
