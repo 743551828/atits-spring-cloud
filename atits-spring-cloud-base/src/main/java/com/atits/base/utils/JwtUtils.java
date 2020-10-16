@@ -11,9 +11,10 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * @description: JWT工具类
- * @author: zhangys
- * @create: 2020-08-31 13:49
+ * JWT工具类
+ *
+ * @author zhangys
+ * @date 2020-08-31 13:49
  **/
 public class JwtUtils {
 

@@ -23,8 +23,9 @@ import static com.atits.base.contants.StatusCodeConstant.*;
 /**
  * JWT接口请求校验拦截器
  * 请求接口时会进入这里验证Token是否合法和过期
- * @author: zhangys
- * @create: 2020-09-10 13:52
+ *
+ * @author zhangys
+ * @date 2020-09-10 13:52
  */
 @Slf4j
 public class JWTAuthenticationTokenFilterProd extends BasicAuthenticationFilter {

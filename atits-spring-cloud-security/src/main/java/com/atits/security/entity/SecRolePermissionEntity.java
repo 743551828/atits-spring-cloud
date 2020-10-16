@@ -12,9 +12,10 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
- * @description: 角色权限实体类
- * @author: zhangys
- * @create: 2020-10-12 15:45
+ * 角色权限实体类
+ *
+ * @author zhangys
+ * @date 2020-10-12 15:45
  **/
 @Data
 @ToString

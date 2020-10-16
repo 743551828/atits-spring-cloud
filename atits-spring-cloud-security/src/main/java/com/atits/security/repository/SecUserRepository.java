@@ -7,9 +7,10 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * @description: 用户
- * @author: zhangys
- * @create: 2020-10-13 09:53
+ * 用户
+ *
+ * @author zhangys
+ * @date 2020-10-13 09:53
  **/
 public interface SecUserRepository extends JpaRepository<SecUserEntity,String>, JpaSpecificationExecutor<SecDepartmentEntity> {
 

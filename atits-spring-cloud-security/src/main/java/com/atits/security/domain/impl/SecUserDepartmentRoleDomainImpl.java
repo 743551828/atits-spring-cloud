@@ -12,9 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description:
- * @author: zhangys
- * @create: 2020-10-13 17:10
+ *
+ *
+ * @author zhangys
+ * @date 2020-10-13 17:10
  **/
 @Component
 public class SecUserDepartmentRoleDomainImpl implements ISecUserDepartmentRoleDomain {

@@ -12,8 +12,9 @@ import java.util.List;
  * SpringSecurity用户的实体
  * 注意:这里必须要实现UserDetails接口
  *
- * @author: zhangys
- * @create: 2020-09-10 13:52
+ *
+ * @author zhangys
+ * @date 2020-09-10 13:52
  */
 @Data
 public class SelfUserDetail implements Serializable, UserDetails {

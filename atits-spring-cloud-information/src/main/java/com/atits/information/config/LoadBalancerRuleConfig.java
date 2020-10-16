@@ -7,9 +7,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 /**
- * @description: 负载均衡配置
- * @author: zhangys
- * @create: 2020-09-29 13:20
+ * 负载均衡配置
+ *
+ * @author zhangys
+ * @date 2020-09-29 13:20
  **/
 @Configuration
 public class LoadBalancerRuleConfig {

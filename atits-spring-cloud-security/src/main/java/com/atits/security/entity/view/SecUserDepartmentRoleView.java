@@ -11,9 +11,10 @@ import javax.persistence.IdClass;
 import java.io.Serializable;
 
 /**
- * @description: 用户权限部门详情视图
- * @author: zhangys
- * @create: 2020-10-13 16:32
+ * 用户权限部门详情视图
+ *
+ * @author zhangys
+ * @date 2020-10-13 16:32
  **/
 @Data
 @Entity(name = "sec_user_department_role_view")

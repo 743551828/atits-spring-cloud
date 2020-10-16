@@ -9,9 +9,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import springfox.documentation.oas.annotations.EnableOpenApi;
 
 /**
- * @description:
- * @author: zhangys
- * @create: 2020-09-08 15:36
+ *
+ *
+ * @author zhangys
+ * @date 2020-09-08 15:36
  **/
 @EnableOpenApi
 @SpringBootApplication

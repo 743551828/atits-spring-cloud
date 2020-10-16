@@ -12,9 +12,10 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * @description: 部门层级
- * @author: zhangys
- * @create: 2020-10-12 14:09
+ * 部门层级
+ *
+ * @author zhangys
+ * @date 2020-10-12 14:09
  **/
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -29,6 +30,7 @@ public class SecDepartmentLevelEntity extends BaseEntity {
     private String parentCode;
 
     @ApiModelProperty("部门层级名称")
+    @Column(unique = true)
     private String name;
 
     @ApiModelProperty("部门层级描述")

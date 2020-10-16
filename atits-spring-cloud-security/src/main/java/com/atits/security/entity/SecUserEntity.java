@@ -13,9 +13,10 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 /**
- * @description: 用户实体类
- * @author: zhangys
- * @create: 2020-09-25 14:16
+ * 用户实体类
+ *
+ * @author zhangys
+ * @date 2020-09-25 14:16
  **/
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -26,6 +27,7 @@ import javax.persistence.UniqueConstraint;
 public class SecUserEntity extends BaseEntity {
 
     @ApiModelProperty("用户名")
+    @Column(unique = true)
     private String username;
 
     @ApiModelProperty("登录用户名")
@@ -33,7 +35,7 @@ public class SecUserEntity extends BaseEntity {
     private String loginUsername;
 
     @ApiModelProperty("登录密码")
-    @Column(name = "login_password")
+    @Column(name = "login_password",unique = true)
     private String loginPassword;
 
     @ApiModelProperty("照片url")
@@ -51,7 +53,7 @@ public class SecUserEntity extends BaseEntity {
     private Long lastLoginTime;
 
     @ApiModelProperty("是否为管理员")
-    @Column(name = "is_admin")
+    @Column(name = "is_admin",unique = true)
     private Integer isAdmin;
 
 }

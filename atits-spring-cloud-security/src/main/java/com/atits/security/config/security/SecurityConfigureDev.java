@@ -15,9 +15,10 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * @description: 该配置类，主要处理⽤户名和密码的校验等事宜
- * @author: zhangys
- * @create: 2020-09-10 13:52
+ * 该配置类，主要处理⽤户名和密码的校验等事宜
+ *
+ * @author zhangys
+ * @date 2020-09-10 13:52
  **/
 @Configuration
 @Profile("dev")

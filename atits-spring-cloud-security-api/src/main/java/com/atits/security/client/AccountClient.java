@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 /**
- * @description: 账户接口
- * @author: zhangys
- * @create: 2020-09-08 13:30
+ * 账户接口
+ *
+ * @author zhangys
+ * @date 2020-09-08 13:30
  **/
 @FeignClient("atits-spring-cloud-security")
 @Api("账户接口")

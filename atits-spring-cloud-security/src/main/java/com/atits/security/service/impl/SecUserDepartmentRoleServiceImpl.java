@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @description:
- * @author: zhangys
- * @create: 2020-10-13 17:21
+ *
+ *
+ * @author zhangys
+ * @date 2020-10-13 17:21
  **/
 @Service
 public class SecUserDepartmentRoleServiceImpl implements ISecUserDepartmentRoleService {

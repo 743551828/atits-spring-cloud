@@ -1,14 +1,15 @@
 package com.atits.base.contants;
 
 /**
- * @description: 是否是管理员泛型
- * @author: zhangys
- * @create: 2020-10-14 10:33
+ * 是否是管理员泛型
+ *
+ * @author zhangys
+ * @date 2020-10-14 10:33
  **/
 public enum  AdminStatus {
 
-    _isAdmin(1,"激活"),
-    _notAdmin(0,"锁定");
+    _isAdmin(1,"是"),
+    _notAdmin(0,"否");
 
     private final Integer code;
     private final String description;

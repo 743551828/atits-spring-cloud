@@ -1,6 +1,7 @@
 package com.atits.base.item;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
@@ -12,9 +13,10 @@ import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 /**
- * @description: 基本实体类
- * @author: zhangys
- * @create: 2020-10-10 15:40
+ * 基本实体类
+ *
+ * @author zhangys
+ * @date 2020-10-10 15:40
  **/
 @Data
 @ToString
@@ -25,12 +27,6 @@ public class BaseEntity implements Serializable {
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String code;
-
-    /**
-     * 创建人
-     */
-    @ApiModelProperty("创建人")
-    private String creator;
 
     /**
      * 创建人code
@@ -45,13 +41,6 @@ public class BaseEntity implements Serializable {
     @Column(name = "created_time")
     @ApiModelProperty("创建时间")
     private Long createdTime;
-
-    /**
-     * 最后操作人
-     */
-    @Column(name = "last_operator")
-    @ApiModelProperty("最近操作人")
-    private String lastOperator;
 
     /**
      * 最后操作人code
@@ -78,7 +67,7 @@ public class BaseEntity implements Serializable {
      * 状态值
      */
     @ApiModelProperty("状态值")
-    private Integer status;
+    private String status;
 
     /**
      * 备注
@@ -86,4 +75,14 @@ public class BaseEntity implements Serializable {
     @ApiModelProperty("备注")
     private String remark;
 
+    public void createInit(String creatorCode, Long createdTime, Integer sortNum) {
+        this.creatorCode = creatorCode;
+        this.createdTime = createdTime;
+        this.sortNum = sortNum;
+    }
+
+    public void updateInit(String lastOperatorCode, Long updateTime) {
+        this.lastOperatorCode = lastOperatorCode;
+        this.updateTime = updateTime;
+    }
 }

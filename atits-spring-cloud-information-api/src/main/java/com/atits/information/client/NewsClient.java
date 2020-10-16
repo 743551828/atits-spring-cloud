@@ -5,9 +5,10 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * @description: 资讯接口
- * @author: zhangys
- * @create: 2020-09-08 13:30
+ * 资讯接口
+ *
+ * @author zhangys
+ * @date 2020-09-08 13:30
  **/
 @FeignClient("atits-spring-cloud-information")
 @Api("资讯接口")

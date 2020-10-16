@@ -13,9 +13,10 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 /**
- * @description: JWT工具类
- * @author: zhangys
- * @create: 2020-08-31 13:49
+ * JWT工具类
+ *
+ * @author zhangys
+ * @date 2020-08-31 13:49
  **/
 public class RsaUtils {
 

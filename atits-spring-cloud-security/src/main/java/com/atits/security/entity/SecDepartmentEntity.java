@@ -12,9 +12,10 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * @description: 部门
- * @author: zhangys
- * @create: 2020-10-12 13:50
+ * 部门
+ *
+ * @author zhangys
+ * @date 2020-10-12 13:50
  **/
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -25,6 +26,7 @@ import javax.persistence.Table;
 public class SecDepartmentEntity extends BaseEntity {
 
     @ApiModelProperty("部门名称")
+    @Column(unique = true)
     private String name;
 
     @ApiModelProperty("父code")

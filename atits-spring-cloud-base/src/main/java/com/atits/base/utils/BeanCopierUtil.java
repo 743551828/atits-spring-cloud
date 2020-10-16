@@ -8,9 +8,10 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @description: 实例转换工具
- * @author: zhangys
- * @create: 2020-08-31 13:49
+ * 实例转换工具
+ *
+ * @author zhangys
+ * @date 2020-08-31 13:49
  **/
 @Slf4j
 public class BeanCopierUtil {

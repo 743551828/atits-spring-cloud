@@ -5,9 +5,10 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @description: 用户权限部门
- * @author: zhangys
- * @create: 2020-10-13 16:30
+ * 用户权限部门
+ *
+ * @author zhangys
+ * @date 2020-10-13 16:30
  **/
 @Data
 public class SelfUserDepartmentRoleDetail implements Serializable {

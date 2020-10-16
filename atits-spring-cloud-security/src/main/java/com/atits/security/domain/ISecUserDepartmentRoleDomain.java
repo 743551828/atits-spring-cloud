@@ -5,9 +5,10 @@ import com.atits.security.entity.view.SecUserDepartmentRoleView;
 import java.util.List;
 
 /**
- * @description: 用户部门权限
- * @author: zhangys
- * @create: 2020-10-13 17:07
+ * 用户部门权限
+ *
+ * @author zhangys
+ * @date 2020-10-13 17:07
  **/
 public interface ISecUserDepartmentRoleDomain {
 

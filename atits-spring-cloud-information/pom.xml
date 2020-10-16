@@ -15,10 +15,6 @@
     <dependencies>
         <dependency>
             <groupId>com.atits</groupId>
-            <artifactId>atits-spring-cloud-base</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.atits</groupId>
             <artifactId>atits-spring-cloud-security-api</artifactId>
         </dependency>
         <dependency>

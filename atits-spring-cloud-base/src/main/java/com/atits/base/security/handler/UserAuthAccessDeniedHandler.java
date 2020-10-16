@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import static com.atits.base.contants.StatusCodeConstant._500008;
 
 /**
- * @Description 暂无权限处理类
+ * 暂无权限处理类
  * @Author Zhangys
  * @CreateTime 2019/10/3 8:39
  */

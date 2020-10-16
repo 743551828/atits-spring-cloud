@@ -26,9 +26,10 @@ import java.util.stream.Collectors;
 import static com.atits.base.contants.AdminStatus._isAdmin;
 
 /**
- * @description: 用户账号配置
- * @author: zhangys
- * @create: 2020-09-03 15:36
+ * 用户账号配置
+ *
+ * @author zhangys
+ * @date 2020-09-03 15:36
  **/
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
@@ -41,11 +42,14 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        SecUserEntity secUserEntity = secUserDomain.getOneByLoginUsername(username);
+        SecUserEntity secUserEntity = secUserDomain.findOneByLoginUsername(username);
         if (secUserEntity == null){
             throw new UsernameNotFoundException("用户名错误");
         }
-        if (UserStatus._PROHIBIT.getCode().equals(secUserEntity.getStatus())){
+        if ("删除".equals(secUserEntity.getStatus())){
+            throw new UsernameNotFoundException("用户已删除");
+        }
+        if (!"激活".equals(secUserEntity.getStatus())){
             throw new LockedException("账号未激活");
         }
         // 组装用户部门角色集合

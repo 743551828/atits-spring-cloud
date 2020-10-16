@@ -13,9 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
 /**
- * @description: 为远程调用添加token
- * @author: zhangys
- * @create: 2020-09-10 13:52
+ * 为远程调用添加token
+ *
+ * @author zhangys
+ * @date 2020-09-10 13:52
  **/
 @Configuration
 public class FeignTokenInterceptor implements RequestInterceptor {

@@ -6,9 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 /**
- * @description: 用户部门权限视图
- * @author: zhangys
- * @create: 2020-10-13 17:03
+ * 用户部门权限视图
+ *
+ * @author zhangys
+ * @date 2020-10-13 17:03
  **/
 public interface SecUserDepartmentRoleViewRepository extends JpaRepository<SecUserDepartmentRoleView,String> {
 

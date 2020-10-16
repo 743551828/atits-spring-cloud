@@ -3,9 +3,10 @@ package com.atits.base.item;
 import java.util.Date;
 
 /**
- * @description: 载荷
- * @author: zhangys
- * @create: 2020-08-31 13:49
+ * 载荷
+ *
+ * @author zhangys
+ * @date 2020-08-31 13:49
  **/
 public class Payload<T> {
 

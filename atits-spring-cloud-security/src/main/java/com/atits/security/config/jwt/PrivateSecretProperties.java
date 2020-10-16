@@ -9,8 +9,9 @@ import java.security.PrivateKey;
 /**
  * JWT配置类
  *
- * @author: zhangys
- * @create: 2020-09-10 13:52
+ *
+ * @author zhangys
+ * @date 2020-09-10 13:52
  */
 @Component
 @ConfigurationProperties(prefix = "private-secret")

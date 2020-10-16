@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @description:
- * @author: zhangys
- * @create: 2020-09-08 16:54
+ *
+ *
+ * @author zhangys
+ * @date 2020-09-08 16:54
  **/
 @RestController
 public class NewsController implements NewsClient {

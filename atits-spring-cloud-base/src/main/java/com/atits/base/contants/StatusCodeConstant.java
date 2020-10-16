@@ -1,9 +1,10 @@
 package com.atits.base.contants;
 
 /**
- * @description: 状态码
- * @author: zhangys
- * @create: 2020-09-29 16:41
+ * 状态码
+ *
+ * @author zhangys
+ * @date 2020-09-29 16:41
  **/
 public enum  StatusCodeConstant {
 
@@ -180,9 +181,9 @@ public enum  StatusCodeConstant {
      */
     _500002(500002L,"用户被冻结"),
     /**
-     * 用户名密码不正确
+     * 用户名或密码不正确
      */
-    _500003(500003L,"用户名密码不正确"),
+    _500003(500003L,"用户名或密码不正确"),
     /**
      * 登录失败
      */

@@ -17,7 +17,7 @@ import java.util.Map;
 import static com.atits.base.contants.StatusCodeConstant.*;
 
 /**
- * @Description 登录成功处理类
+ * 登录成功处理类
  * @Author Zhangys
  * @CreateTime 2019/10/3 9:13
  */

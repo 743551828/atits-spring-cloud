@@ -6,9 +6,10 @@ import lombok.Data;
 import lombok.ToString;
 
 /**
- * @description: 用户dto
- * @author: zhangys
- * @create: 2020-09-25 14:17
+ * 用户dto
+ *
+ * @author zhangys
+ * @date 2020-09-25 14:17
  **/
 @Data
 @ToString

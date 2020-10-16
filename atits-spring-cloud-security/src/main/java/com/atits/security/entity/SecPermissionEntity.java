@@ -12,9 +12,10 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * @description: 权限
- * @author: zhangys
- * @create: 2020-10-12 14:30
+ * 权限
+ *
+ * @author zhangys
+ * @date 2020-10-12 14:30
  **/
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -25,6 +26,7 @@ import javax.persistence.Table;
 public class SecPermissionEntity extends BaseEntity {
 
     @ApiModelProperty("权限名称")
+    @Column(unique = true)
     private String name;
 
     @ApiModelProperty("权限类型")

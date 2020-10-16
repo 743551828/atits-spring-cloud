@@ -6,9 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 
 /**
- * @description:
- * @author: zhangys
- * @create: 2020-09-27 10:06
+ *
+ *
+ * @author zhangys
+ * @date 2020-09-27 10:06
  **/
 @EnableOpenApi
 @SpringBootApplication
