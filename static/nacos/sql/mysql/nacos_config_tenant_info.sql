@@ -1,0 +1,2 @@
+INSERT INTO nacos_config.tenant_info (id, kp, tenant_id, tenant_name, tenant_desc, create_source, gmt_create, gmt_modified) VALUES (1, '1', 'c0f49359-6117-443c-b220-6290c4ca221d', 'dev', '开发环境', 'nacos', 1599703219492, 1599703219492);
+INSERT INTO nacos_config.tenant_info (id, kp, tenant_id, tenant_name, tenant_desc, create_source, gmt_create, gmt_modified) VALUES (2, '1', '49e19216-89ea-4ef3-9f36-988cb9c260e0', 'prod', '上线版本', 'nacos', 1599703247605, 1599703247605);
