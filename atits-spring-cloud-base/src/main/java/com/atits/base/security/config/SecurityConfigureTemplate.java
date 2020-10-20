@@ -39,6 +39,7 @@ public class SecurityConfigureTemplate {
 
     public void configureProd(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/actuator/**").permitAll()
                 // 需要登陆后才能访问
                 .anyRequest().authenticated()
                 .and()

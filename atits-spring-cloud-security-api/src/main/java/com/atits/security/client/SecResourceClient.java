@@ -26,7 +26,7 @@ public interface SecResourceClient {
 
     @ApiOperation("查询资源详情")
     @GetMapping("/sec/resource/find/one/{code}")
-    ResponseData findOne(@PathVariable @ApiParam("资源code") String code);
+    ResponseData findOne(@PathVariable("code") @ApiParam("资源code") String code);
 
     @ApiOperation("批量删除资源")
     @DeleteMapping("/sec/resource/delete")

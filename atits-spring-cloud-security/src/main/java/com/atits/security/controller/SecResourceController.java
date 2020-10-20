@@ -6,8 +6,10 @@ import com.atits.base.utils.ResponseUtil;
 import com.atits.security.client.SecResourceClient;
 import com.atits.security.model.request.SecResourceSaveRequest;
 import com.atits.security.service.ISecResourceService;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,7 +34,7 @@ public class SecResourceController extends BaseController implements SecResource
     }
 
     @Override
-    public ResponseData findOne(String code) {
+    public ResponseData findOne(@PathVariable("code") @ApiParam("资源code") String code) {
         return ResponseUtil.success(secResourceService.findOne(code));
     }
 

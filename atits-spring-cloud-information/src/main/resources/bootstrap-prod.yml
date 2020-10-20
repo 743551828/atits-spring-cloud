@@ -15,4 +15,5 @@ spring:
         extension-configs:
           - data-id: jwt.yaml
             group: jwt-group
-            refresh: true
+          - data-id: spring-boot-admin.yaml
+            group: spring-boot-admin-group

@@ -9,6 +9,7 @@
         <module>atits-spring-cloud-security-api</module>
         <module>atits-spring-cloud-gateway</module>
         <module>atits-spring-cloud-information-api</module>
+        <module>atits-spring-cloud-monitor</module>
     </modules>
 	<parent>
         <groupId>org.springframework.boot</groupId>
@@ -35,6 +36,7 @@
 		<jwt.version>0.9.1</jwt.version>
 		<fastjson.version>1.2.61</fastjson.version>
 		<springfox.version>3.0.0</springfox.version>
+		<spring-boot-admin.version>2.2.4</spring-boot-admin.version>
 	</properties>
 
 	<dependencies>
@@ -76,6 +78,13 @@
 				<groupId>com.alibaba.cloud</groupId>
 				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
 				<version>${nacos.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-dependencies</artifactId>
+				<version>${spring-boot-admin.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

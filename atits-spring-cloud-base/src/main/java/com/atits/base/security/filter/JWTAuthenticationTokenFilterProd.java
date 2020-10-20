@@ -58,14 +58,12 @@ public class JWTAuthenticationTokenFilterProd extends BasicAuthenticationFilter 
                 SelfUserDetail userInfo = payload.getUserInfo();
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userInfo, userInfo.getCode(), userInfo.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
-                filterChain.doFilter(request, response);
             } catch (ExpiredJwtException e){
                 ResultUtil.responseJson(response,ResultUtil.resultCode(_500005));
             } catch (Exception e) {
                 ResultUtil.responseJson(response,ResultUtil.resultCode(_500006));
             }
-        }else {
-            ResultUtil.responseJson(response,ResultUtil.resultCode(_500007));
         }
+        filterChain.doFilter(request, response);
     }
 }
